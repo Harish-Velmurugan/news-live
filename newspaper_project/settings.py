@@ -126,8 +126,4 @@ EMAIL_USE_TLS = True
 DEFAULT_FROM_EMAIL = 'aimbot862@gmail.com'
 
 
-
-#  Add configuration for static files storage using whitenoise
-STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
-prod_db  =  dj_database_url.config(conn_max_age=500)
-DATABASES['default'].update(prod_db)
+STATIC_ROOT = os.path.join(BASE_DIR,'staticfiles')
