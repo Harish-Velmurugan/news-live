@@ -1,0 +1,32 @@
+ {% extends 'base.html' %} {% block title %}Home {% endblock %} {% block content %} {% if user.is_authenticated %}
+<div class="jumbotron">
+
+    <h1 class="display-2">Newspaper app</h1>
+    <p class="lead">A Newspaper website built with Django.</p>
+    <h1 class="display-4">Hi {{ user.username }}!</h1>
+    <p class="lead">
+        <a class="btn btn-primary btn-lg" href=" {% url 'logout' %}" role="button">
+Logout</a>
+        <a class="btn btn-primary btn-lg" href=" {% url 'article_list' %}" role="button">
+View All Articles</a>
+    </p>
+</div>
+
+<h3>Top Stories</h3>
+<ul class="list-group">
+    {% for new in news %}
+    <li class="list-group-item">{{ new }}</li>
+    {% endfor %}
+</ul>
+{% else %}
+<div class="jumbotron">
+    <h1 class="display-4">Newspaper app</h1>
+    <p class="lead">A Newspaper website built with Django.</p>
+    <p class="lead">
+        <a class="btn btn-primary btn-lg" href=" {% url 'article_list' %}" role="button">
+View All Articles</a>
+    </p>
+</div>
+<p>You are not logged in</p>
+<a href=" {% url 'login' %}">login</a> I
+<a href=" {% url 'signup' %}">signup</a> {% endif %} {% endblock %}
