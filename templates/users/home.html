@@ -11,14 +11,32 @@ Logout</a>
 View All Articles</a>
     </p>
 </div>
-
-<h3>Top Stories</h3>
+<br>
+<h3>Top Stories Around Tamil Nadu</h3>
+<br>
 <ul class="list-group">
     {% for new in news %}
     <li class="list-group-item">{{ new }}</li>
     {% endfor %}
 </ul>
-{% else %}
+<br>
+<h3>Top Stories Around India</h3>
+<br> {% for article in articles %}
+<div class="card">
+    <div class="row no-gutters">
+        <div class="col-md-4">
+            <img src="{{ article.urlToImage }}" class="card-img" alt="Image not available">
+        </div>
+        <div class="col-md-8">
+            <div class="card-body">
+                <h5 class="card-title">{{ article.title }}</h5>
+                <p class="card-text">{{ article.description }}</p>
+                <p class="card-text"><small class="text-muted">Published on {{ article.publishedAt }}</small></p>
+            </div>
+        </div>
+    </div>
+</div>
+<br> {% endfor %} {% else %}
 <div class="jumbotron">
     <h1 class="display-2">Newspaper app</h1>
     <p class="lead">A Newspaper website built with Django.</p>
